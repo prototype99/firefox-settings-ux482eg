@@ -1,0 +1,51 @@
+dom.ipc.processCount.extension	2
+gfx.webrender.batched-texture-uploads
+gfx.webrender.all	true
+gfx.webrender.compositor	true
+gfx.webrender.compositor.force-enabled	true
+gfx.webrender.batching.lookback 20
+webgl.max-contexts-per-principal 100
+image.cache.size 104857600
+browser.cache.disk.smart_size.enabled false
+browser.cache.disk.metadata_chunk_size 512
+browser.cache.max_shutdown_io_lag 16
+browser.cache.disk.capacity 4194304
+browser.cache.memory.capacity 	1048576
+webgl.1.allow-core-profiles true
+webgl.out-of-process.force true
+webgl.out-of-process.shmem-size 1048576
+webgl.allow-fb-invalidation true
+webgl.enable-draft-extensions true
+webgl.enable-privileged-extensions true
+webgl.force-enabled true
+media.hardware-video-decoding.force-enabled true
+
+gfx.webrender.precache-shaders	true
+
+gfx.x11-egl.force-enabled	true
+
+gfx.canvas.accelerated
+
+media.ffmpeg.allow-openh264	true
+
+media.ffmpeg.disable-software-fallback	true
+
+media.hardware-video-decoding.force-enabled	true
+media.hardware-video-encoding.force-enabled	true
+media.navigator.mediadatadecoder_vp8_hardware_enabled	true
+media.videocontrols.picture-in-picture.enable-when-switching-tabs.enabled	true
+media.videocontrols.picture-in-picture.video-toggle.first-seen-secs	1744710824
+media.videocontrols.picture-in-picture.video-toggle.has-used	true
+media.webspeech.synth.dont_notify_on_error	true
+signon.firefoxRelay.feature	disabled
+widget.dmabuf.force-enabled	true
+signon.rustMirror.migrationNeeded	false
+signon.rustMirror.poisoned	false
+
+webgl?
+gfx?
+dom?
+image?
+browser.cache
+media?
+widget????????????
