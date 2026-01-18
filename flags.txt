@@ -2,7 +2,6 @@ dom.ipc.processCount.extension	2
 gfx.webrender.batched-texture-uploads
 gfx.webrender.all	true
 gfx.webrender.compositor	true
-gfx.webrender.compositor.force-enabled	true
 gfx.webrender.batching.lookback 20
 webgl.max-contexts-per-principal 100
 image.cache.size 104857600
@@ -12,7 +11,6 @@ browser.cache.max_shutdown_io_lag 16
 browser.cache.disk.capacity 4194304
 browser.cache.memory.capacity 	1048576
 webgl.1.allow-core-profiles true
-webgl.out-of-process.force true
 webgl.out-of-process.shmem-size 1048576
 webgl.allow-fb-invalidation true
 webgl.enable-draft-extensions true

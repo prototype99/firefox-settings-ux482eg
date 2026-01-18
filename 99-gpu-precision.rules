@@ -1,0 +1,5 @@
+# Persistent symlink for Intel Iris Xe [8086:9a49]
+SUBSYSTEM=="drm", ACTION=="add", ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9a49", SYMLINK+="dri/intel_gpu"
+
+# Persistent symlink for Nvidia MX450 [10de:1f9c]
+SUBSYSTEM=="drm", ACTION=="add", ATTRS{vendor}=="0x10de", ATTRS{device}=="0x1f9c", SYMLINK+="dri/nvidia_gpu"
