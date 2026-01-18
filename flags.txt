@@ -1,4 +1,3 @@
-dom.ipc.processCount.extension	2
 gfx.webrender.batched-texture-uploads
 gfx.webrender.all	true
 gfx.webrender.compositor	true
