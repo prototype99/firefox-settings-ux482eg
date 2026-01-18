@@ -17,9 +17,7 @@ webgl.enable-draft-extensions true
 webgl.enable-privileged-extensions true
 webgl.force-enabled true
 media.hardware-video-decoding.force-enabled true
-
 gfx.webrender.precache-shaders	true
-
 gfx.x11-egl.force-enabled	true
 
 gfx.canvas.accelerated
