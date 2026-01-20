@@ -33,6 +33,33 @@ gfx.canvas.accelerated.cache-items 32768
 gfx.canvas.accelerated.cache-size 4096
 gfx.webrender.quality.force-subpixel-aa-where-possible true
 webgl.allow-immediate-queries true
+gfx.blithelper.lut-size.rgb.b 64
+gfx.blithelper.lut-size.rgb.g 64
+gfx.blithelper.lut-size.rgb.r 64
+gfx.blithelper.lut-size.ycbcr.cb 64
+gfx.blithelper.lut-size.ycbcr.cr 64
+gfx.blithelper.lut-size.ycbcr.y 64
+gfx.blithelper.precision 1
+gfx.canvas.accelerated.force-enabled true
+gfx.webrender.layer-compositor true
+gfx.canvas.accelerated.gpu-path-complexity 256
+gfx.canvas.accelerated.gpu-path-size 128
+gfx.canvas.accelerated.max-data-shmems 2048
+gfx.content.skia-font-cache-size 80
+gfx.canvas.accelerated.max-draw-target-count 128
+gfx.canvas.accelerated.max-export-surfaces 32
+browser.cache.disk.parent_directory 	~/.cache/hellfire-nc
+network.http.max-connections 1800
+network.http.max-persistent-connections-per-server 10
+network.http.pacing.requests.enabled false
+network.dns.localDomains localhost
+network.dnsCacheEntries 1000
+gfx.canvas.accelerated.min-size 256
+layers.gpu-process.max_restarts 20
+layers.gpu-process.stable.min-uptime-ms 2000
+gfx.webgpu.ignore-blocklist true
+dom.webgpu.wgpu-backend vulkan
+dom.ipc.processCount.webIsolated 1
 
 gfx?
 dom?
@@ -40,3 +67,5 @@ image?
 browser.cache
 media?
 widget????????????
+network?
+layers?
