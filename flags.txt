@@ -1,6 +1,5 @@
 gfx.webrender.batched-texture-uploads
 gfx.webrender.all	true
-gfx.webrender.compositor	true
 gfx.webrender.batching.lookback 20
 webgl.max-contexts-per-principal 100
 image.cache.size 104857600
@@ -17,7 +16,6 @@ webgl.enable-privileged-extensions true
 webgl.force-enabled true
 media.hardware-video-decoding.force-enabled true
 gfx.webrender.precache-shaders	true
-gfx.x11-egl.force-enabled	true
 layers.acceleration.force-enabled	true
 media.ffmpeg.allow-openh264	true
 media.ffmpeg.disable-software-fallback	true
@@ -59,7 +57,7 @@ layers.gpu-process.max_restarts 20
 layers.gpu-process.stable.min-uptime-ms 2000
 gfx.webgpu.ignore-blocklist true
 dom.webgpu.wgpu-backend vulkan
-dom.ipc.processCount.webIsolated 1
+dom.ipc.processCount.webIsolated -1
 
 gfx?
 dom?
