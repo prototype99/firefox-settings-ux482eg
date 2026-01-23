@@ -58,6 +58,7 @@ layers.gpu-process.stable.min-uptime-ms 2000
 gfx.webgpu.ignore-blocklist true
 dom.webgpu.wgpu-backend vulkan
 dom.ipc.processCount.webIsolated -1
+gfx.canvas.accelerated.stroke-to-fill-path true
 
 gfx?
 dom?
