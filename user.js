@@ -1,0 +1,84 @@
+// --- PERFORMANCE TWEAKS (last tested Hellfire 149, nvidia MX450, wayland) ---
+user_pref("browser.cache.disk.capacity", 4194304);
+user_pref("browser.cache.disk.metadata_chunk_size", 512);
+// best as EXT4 partition
+user_pref("browser.cache.disk.parent_directory", "~/.cache/hellfire-nc");
+user_pref("browser.cache.disk.smart_size.enabled", false);
+user_pref("browser.cache.max_shutdown_io_lag", 16);
+user_pref("browser.cache.memory.capacity", 1048576);
+user_pref("browser.tabs.unloadOnLowMemory", true);
+user_pref("content.notify.interval", 100000);
+user_pref("dom.ipc.processCount", 16);
+// Dynamic scaling
+user_pref("dom.ipc.processCount.webIsolated", -1);
+user_pref("dom.webgpu.wgpu-backend", "vulkan");
+user_pref("gfx.blithelper.lut-size.rgb.b", 64);
+user_pref("gfx.blithelper.lut-size.rgb.g", 64);
+user_pref("gfx.blithelper.lut-size.rgb.r", 64);
+user_pref("gfx.blithelper.lut-size.ycbcr.cb", 64);
+user_pref("gfx.blithelper.lut-size.ycbcr.cr", 64);
+user_pref("gfx.blithelper.lut-size.ycbcr.y", 64);
+user_pref("gfx.blithelper.precision", 1);
+user_pref("gfx.canvas.accelerated.cache-items", 32768);
+user_pref("gfx.canvas.accelerated.cache-size", 4096);
+user_pref("gfx.canvas.accelerated.force-enabled", true);
+user_pref("gfx.canvas.accelerated.gpu-path-complexity", 256);
+user_pref("gfx.canvas.accelerated.gpu-path-size", 128);
+user_pref("gfx.canvas.accelerated.max-data-shmems", 2048);
+user_pref("gfx.canvas.accelerated.max-draw-target-count", 128);
+user_pref("gfx.canvas.accelerated.max-export-surfaces", 32);
+user_pref("gfx.canvas.accelerated.min-size", 256);
+user_pref("gfx.canvas.accelerated.stroke-to-fill-path", true);
+user_pref("gfx.content.skia-font-cache-size", 80);
+user_pref("gfx.webgpu.ignore-blocklist", true);
+user_pref("gfx.webrender.all", true);
+user_pref("gfx.webrender.batched-texture-uploads", true);
+user_pref("gfx.webrender.batching.lookback", 20);
+user_pref("gfx.webrender.layer-compositor", true);
+user_pref("gfx.webrender.precache-shaders", true);
+user_pref("gfx.webrender.quality.force-subpixel-aa-where-possible", true);
+user_pref("image.cache.size", 104857600);
+user_pref("image.mem.max_decoded_image_kb", 512000);
+user_pref("layers.acceleration.force-enabled", true);
+user_pref("layers.gpu-process.max_restarts", 20);
+user_pref("layers.gpu-process.stable.min-uptime-ms", 2000);
+// AV1 is heavy; disable to force VP9/H264
+user_pref("media.av1.enabled", false);
+user_pref("media.ffmpeg.allow-openh264", true);
+user_pref("media.ffmpeg.disable-software-fallback", true);
+user_pref("media.hardware-video-decoding.force-enabled", true);
+user_pref("media.hardware-video-encoding.force-enabled", true);
+user_pref("media.navigator.mediadatadecoder_vp8_hardware_enabled", true);
+user_pref("network.dns.localDomains", "localhost");
+user_pref("network.dnsCacheEntries", 1000);
+user_pref("network.http.max-connections", 1800);
+user_pref("network.http.max-persistent-connections-per-server", 10);
+user_pref("network.http.pacing.requests.enabled", false);
+user_pref("webgl.1.allow-core-profiles", true);
+user_pref("webgl.allow-fb-invalidation", true);
+user_pref("webgl.allow-immediate-queries", true);
+user_pref("webgl.auto-flush.gl", true);
+//only good for windows
+user_pref("webgl.disable-angle", true);
+user_pref("webgl.enable-draft-extensions", true);
+user_pref("webgl.enable-privileged-extensions", true);
+user_pref("webgl.force-enabled", true);
+user_pref("webgl.max-contexts-per-principal", 100);
+user_pref("webgl.msaa-force", true);
+user_pref("webgl.msaa-samples", 8);
+user_pref("webgl.out-of-process.shmem-size", 1048576);
+
+// Hardware Handshake (Fixes the dmabuf SIGSEGV, default behaviour for now)
+//user_pref("gfx.webrender.compositor", false);
+//user_pref("gfx.x11-egl.force-enabled", false);
+
+//TODO
+//gfx?
+//dom?
+//image?
+//browser.cache
+//media?
+//widget????????????
+//network?
+/layers?
+//browser?
