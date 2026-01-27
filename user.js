@@ -6,6 +6,8 @@ user_pref("browser.cache.disk.parent_directory", "~/.cache/hellfire-nc");
 user_pref("browser.cache.disk.smart_size.enabled", false);
 user_pref("browser.cache.max_shutdown_io_lag", 16);
 user_pref("browser.cache.memory.capacity", 1048576);
+user_pref("browser.gesture.swipe.left", "");
+user_pref("browser.gesture.swipe.right", "");
 user_pref("browser.tabs.unloadOnLowMemory", true);
 user_pref("content.notify.interval", 100000);
 user_pref("dom.ipc.processCount", 16);
@@ -29,6 +31,9 @@ user_pref("gfx.canvas.accelerated.max-draw-target-count", 128);
 user_pref("gfx.canvas.accelerated.max-export-surfaces", 32);
 user_pref("gfx.canvas.accelerated.min-size", 256);
 user_pref("gfx.canvas.accelerated.stroke-to-fill-path", true);
+user_pref("gfx.canvas.remote.drop-buffer-limit", 100);
+user_pref("gfx.canvas.remote.drop-buffer-milliseconds", 10000);
+user_pref("gfx.canvas.remote.event-timeout-ms", 5);
 user_pref("gfx.content.skia-font-cache-size", 80);
 user_pref("gfx.webgpu.ignore-blocklist", true);
 user_pref("gfx.webrender.all", true);
@@ -67,6 +72,7 @@ user_pref("webgl.max-contexts-per-principal", 100);
 user_pref("webgl.msaa-force", true);
 user_pref("webgl.msaa-samples", 8);
 user_pref("webgl.out-of-process.shmem-size", 1048576);
+user_pref("widget.disable-swipe-tracker", true);
 
 // Hardware Handshake (Fixes the dmabuf SIGSEGV, default behaviour for now)
 //user_pref("gfx.webrender.compositor", false);
