@@ -1,4 +1,5 @@
 // --- PERFORMANCE TWEAKS (last tested Hellfire 149, nvidia MX450, wayland) ---
+user_pref("browser.aiwindow.enabled", true);
 user_pref("browser.cache.disk.capacity", 4194304);
 user_pref("browser.cache.disk.metadata_chunk_size", 512);
 // best as EXT4 partition
