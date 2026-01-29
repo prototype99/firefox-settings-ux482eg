@@ -15,6 +15,10 @@ user_pref("app.update.enabled", false);
 user_pref("app.update.interval", 315360000);
 // Stops the background service from checking while the browser is closed
 user_pref("app.update.service.enabled", false);
+user_pref("app.update.staging.enabled", false);
+user_pref("apz.allow_double_tap_zooming", false);
+// Allows seamless scroll handoff from sub-elements to the main page
+user_pref("apz.allow_immediate_handoff", true);
 user_pref("browser.aiwindow.enabled", true);
 user_pref("browser.cache.disk.capacity", 4194304);
 user_pref("browser.cache.disk.metadata_chunk_size", 512);
