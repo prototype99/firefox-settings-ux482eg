@@ -20,7 +20,11 @@ user_pref("apz.allow_double_tap_zooming", false);
 // Allows seamless scroll handoff from sub-elements to the main page
 user_pref("apz.allow_immediate_handoff", true);
 user_pref("browser.aiwindow.enabled", true);
+// Master switch for the native backup system (Disabled)
+user_pref("browser.backup.enabled", false);
 user_pref("browser.cache.disk.capacity", 4194304);
+user_pref("browser.cache.disk.content_type_media_limit", 102400);
+user_pref("browser.cache.disk.max_entry_size", 102400);
 user_pref("browser.cache.disk.metadata_chunk_size", 512);
 // best as EXT4 partition
 user_pref("browser.cache.disk.parent_directory", "~/.cache/hellfire-nc");
