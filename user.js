@@ -1,4 +1,11 @@
 // --- PERFORMANCE TWEAKS (last tested Hellfire 149, nvidia MX450, wayland) ---
+user_pref("about.glean.redesign.enabled", true);
+user_pref("accessibility.accesskeycausesactivation", false);
+user_pref("accessibility.ariaNotify.enabled", false);
+user_pref("accessibility.browsewithcaret_shortcut.enabled", false);
+user_pref("accessibility.cache.enabled", false);
+user_pref("accessibility.force_disabled", 1);
+user_pref("accessibility.typeaheadfind.enablesound", false);
 user_pref("browser.aiwindow.enabled", true);
 user_pref("browser.cache.disk.capacity", 4194304);
 user_pref("browser.cache.disk.metadata_chunk_size", 512);
