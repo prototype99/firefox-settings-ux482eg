@@ -6,6 +6,15 @@ user_pref("accessibility.browsewithcaret_shortcut.enabled", false);
 user_pref("accessibility.cache.enabled", false);
 user_pref("accessibility.force_disabled", 1);
 user_pref("accessibility.typeaheadfind.enablesound", false);
+user_pref("accessibility.uia.enable", 0);
+// Disables internal automatic updates
+user_pref("app.update.auto", false);
+// Disables the check for updates entirely
+user_pref("app.update.enabled", false);
+// Set check interval to 10 years to stop background polling
+user_pref("app.update.interval", 315360000);
+// Stops the background service from checking while the browser is closed
+user_pref("app.update.service.enabled", false);
 user_pref("browser.aiwindow.enabled", true);
 user_pref("browser.cache.disk.capacity", 4194304);
 user_pref("browser.cache.disk.metadata_chunk_size", 512);
