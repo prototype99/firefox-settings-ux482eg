@@ -35,6 +35,9 @@ user_pref("browser.gesture.swipe.left", "");
 user_pref("browser.gesture.swipe.right", "");
 user_pref("browser.tabs.unloadOnLowMemory", true);
 user_pref("content.notify.interval", 100000);
+// Enables the new native Cookie Banner blocking
+user_pref("cookiebanners.service.mode", 1);
+user_pref("cookiebanners.service.mode.privateBrowsing", 1);
 user_pref("dom.ipc.processCount", 16);
 // Dynamic scaling
 user_pref("dom.ipc.processCount.webIsolated", -1);
@@ -84,6 +87,7 @@ user_pref("network.dnsCacheEntries", 1000);
 user_pref("network.http.max-connections", 1800);
 user_pref("network.http.max-persistent-connections-per-server", 10);
 user_pref("network.http.pacing.requests.enabled", false);
+user_pref("network.lna.block_trackers", true);
 user_pref("webgl.1.allow-core-profiles", true);
 user_pref("webgl.allow-fb-invalidation", true);
 user_pref("webgl.allow-immediate-queries", true);
@@ -111,5 +115,5 @@ user_pref("widget.disable-swipe-tracker", true);
 //media?
 //widget????????????
 //network?
-/layers?
+//layers?
 //browser?

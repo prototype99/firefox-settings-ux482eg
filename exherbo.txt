@@ -1,0 +1,489 @@
+resolv.conf?
+
+check out app-alternatives
+
+world favourites file
+
+/etc/paludis/options.conf?
+
+fstab files!
+
+custome /etc/DIR_COLORS
+
+can eclectic news read new handle gentoo news?
+
+please note: for any cave resolve command, add -x if you're happy with it
+
+1. configure partitions
+
+2. throw stage into partition
+
+2. cd into partition
+
+2. sudo tar xJpf exherbo*xz
+
+3. this:
+
+sudo mount -o rbind /dev /run/media/seirra/exherbo/dev/ && sudo mount -o rbind /sys /run/media/seirra/exherbo/sys/ && sudo mount -t proc none /run/media/seirra/exherbo/proc/ && sudo mount /dev//nvme0n1p1 /run/media/seirra/exherbo/boot/efi
+
+4. copy over /etc/resolv.conf, example:
+
+# Use Cloudflare (Primary) and Google (Secondary)
+nameserver 1.1.1.1
+nameserver 1.0.0.1
+nameserver 8.8.8.8
+
+# Optimization options:
+# - timeout:1  Wait only 1 sec for a response before trying the next server
+# - attempts:2 Don't waste time on a dead server
+# - rotate    Spread the load across all three servers (improves cache diversity)
+# - edns0     Enable modern DNS features for faster/larger responses
+options timeout:1 attempts:2 rotate edns0 trust-ad
+
+5. sudo env -i TERM=$TERM SHELL=/bin/bash HOME=$HOME $(which chroot) /run/media/seirra/exherbo /bin/bash
+
+6. cd /
+
+7. copy over files from /boot and /lib/modules
+
+8. source /etc/profile
+
+9. export PS1="(chroot) $PS1"
+
+10. cd /etc/paludis && vim bashrc && vim *conf
+
+11. cave sync
+
+12. eclectic news read new
+
+13. cave resolve -x repository/hardware  repository/obeliks repository/perl  repository/desktop repository/python repository/virtualization repository/CleverCloud
+
+14. add khymaeric-parent conf file
+
+15. cave sync
+
+16. point parent file to khymaeric-parent profile
+
+17. cave resolve -x dev-lang/python dev-libs/libaio --skip-phase test
+
+18. cave resolve sys-boot/dracut linux-firmware sys-boot/refindplus sys-boot/plymouth sys-fs/btrfs-progs sys-fs/dosfstools
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+3. What makes it "Plus"?
+
+When you start writing this exheres, you'll notice a few unique variables you might want to toggle:
+
+    GOP_FIX: Some versions allow you to bake in a "GOP Fix" that forces a specific resolution at compile time. For your Zenbook Duo's 1080p screen, this ensures the buffer is exactly 1920x1080.
+
+    DMA_PROTECT: A security feature (though you prefer performance) that handles how memory is accessed during the boot phase.
+
+    BDS_PROTOCOL: This is the "Boot Device Selection" logic. rEFIndPlus's version is much stricter, which is what gives you that "Strict UEFI Compliance."
+
+use cave show stages to see the stage set
+
+6. set repos dir
+
+10. ln -sf ../usr/share/zoneinfo/Europe/London /etc/localtime
+
+10. set /etc/locale.gen
+
+11. locale-gen
+
+12. eselect locale set
+
+11. USE="dracut refind btrfs iwd -networkmanager" ACCEPT_LICENSE="*" emerge --ask sys-firmware/sof-firmware sys-kernel/linux-firmware sys-auth/rtkit kde-plasma/kwallet-pam kde-apps/kwalletmanager app-portage/eix sys-firmware/intel-microcode sys-kernel/installkernel app-shells/dash sys-kernel/gentoo-kernel net-misc/cmst net-misc/connman app-portage/gentoolkit sys-apps/mlocate net-misc/chrony sys-fs/dosfstools sys-fs/btrfs-progs sys-block/io-scheduler-udev-rules
+
+12. rm /bin/sh
+
+13. ln -s dash /bin/sh
+
+12. systemctl --user --force enable wireplumber.service pipewire.socket pipewire-pulse.socket switcheroo-control
+
+13. refind-install
+
+14. echo hostname > /etc/hostname
+
+15. hostnamectl hostname tux
+
+16. set fstab
+
+17. systemctl daemon-reload
+
+18. passwd
+
+19. systemd-machine-id-setup
+
+20. systemd-firstboot --prompt
+
+21. systemctl
+
+22. systemctl preset-all --preset-mode=enable-only
+
+23. systemctl preset-all
+
+24. configure /etc/chrony/chrony.conf
+
+25. systemctl enable chronyd.service
+
+Build Options:
+    dwarf_compress:                Compress DWARF2+ debug information
+    expensive_tests:               Run tests considered by the package to be useful, but expensive
+    jobs:                          How many jobs the package's build system should use, where supported
+    recommended_tests:             Run tests considered by the package to be recommended
+    symbols:                       How to handle debug symbols in installed files
+    trace:                         Trace actions executed by the package (very noisy, for debugging broken builds only)
+    work:                          Whether to preserve or remove working directories
+
+OPTIONS:
+    X:                             Adds support for X11
+    bash-completion:               Install completion files for the Bourne Again Shell
+    cairo:                         Add support utilizing Cairo
+    djvu:                          Support for the DjVu file format
+    dmeventd:                      DM event daemon to monitor active mapped devices
+    doc:
+        sys-libs/liburing:0::arbor:  Adds extra documentation (API, Javadoc, etc)
+        dev-python/Cython:0::python:  Adds extra documentation (API, Javadoc, etc)
+        media-gfx/ImageMagick:0::arbor:  Adds extra documentation (API, Javadoc, etc)
+        dev-python/Sphinx:0::python:  Install HTML documentation
+        dev-python/lxml:0::python:  Adds extra documentation (API, Javadoc, etc)
+    examples:                      Install example source code
+    fftw:                          Support for the discrete fourier transformation
+    fontconfig:                    Support for font handling utilizing fontconfig
+    fpx:                           Support for the FlashPix image format
+    fsadm:                         Utility to resize or check filesystem on a device
+    graphviz:                      Adds support for the Graphviz library
+    gtk3:                          Add GUI support utilizing GTK3
+    hdri:                          Build a high dynamic range version of ImageMagick
+    heif:                          Support for the H(igh) E(fficiency) I(mage) F(ile) F(ormat)
+    jpeg2000:                      Support for JPEG 2000, a wavelet-based image compression format
+    latex:                         Add support for LaTeX
+    lcms:                          Adds lcms support (color management engine)
+    lqr:                           Support for liquid rescaling (aka seam carving) image resize algorithm
+    nvme:                          Enable nvme alternate WWID
+    openexr:                       Support for the OpenEXR image file format
+    openmp:                        Support for Open Multi-Processing
+    pango:                         Support for laying out and rendering utilizing pango
+    perl:                          Adds support/bindings for the Perl language
+    postscript:                    Support for PostScript utilizing Ghostscript
+    python:
+        sys-fs/btrfs-progs:0::arbor:  Adds support/bindings for the Python language
+        app-arch/brotli:0::arbor:  Non CFFI Python bindings
+    qt5:                           Add GUI support utilizing Qt5
+    qt6:                           Add GUI support utilizing Qt6
+    raw:                           RAW format support through libraw
+    svg:                           Add support for SVG (Scalable Vector Graphics)
+    tiff:                          Adds support for the TIFF image format
+    tk:                            Add GUI support utilizing Tk
+    truetype:                      Adds support for FreeType and/or FreeType2 fonts
+    uhdr:                          Support for Ultra HDR images
+    webagg:                        Add support for the web backend
+    webp:                          Support for the Webp image format
+    wmf:                           Support for the Windows Metafile image format
+    wxwidgets:                     Add GUI support utilizing wxWidgets
+    zoned:                         Support for Zoned Storage Devices
+    zstd:                          Support for the ZStandard compression algorithm
+
+parts:
+    openrc:                        OpenRC service files
+
+providers:
+    eudev:                         Use eudev as the udev provider
+    graphicsmagick:                Tests require the convert command
+    ijg-jpeg:                      Use Independent JPEG Group's libjpeg as the JPEG provider
+    imagemagick:                   Tests require the convert command
+    jpeg-turbo:                    Use libjpeg-turbo as the JPEG provider
+    libgcrypt:                     Prefer libgcrypt over the build-in hash implementation
+    libsodium:                     Prefer libsodium over the built-in hash implementation
+    openssl:                       Prefer libsodium over the built-in hash implementation
+    systemd:                       Use systemd as the syslog/udev/logind provider
+
+python_abis:
+    2.7:                           Use Python ABI 2.7
+    3.10:                          Use Python ABI 3.10
+    3.11:                          Use Python ABI 3.11
+    3.12:                          Use Python ABI 3.12
+    3.13:                          Use Python ABI 3.13
+    3.14:                          Use Python ABI 3.14
+    3.9:                           Use Python ABI 3.9
+
+n   app-misc/rdfind:0::arbor 1.7.0 to ::installed
+    "Program that finds duplicate files"
+    -xxhash build_options: symbols=split jobs=2 -dwarf_compress recommended_tests -trace work=tidyup
+    Reasons: firmware/linux-firmware-20260110:0::hardware
+
+n   firmware/linux-firmware:0::hardware 20260110 to ::installed
+    "Firmware blobs for use with the Linux kernel"
+    build_options: jobs=2 -dwarf_compress (-recommended_tests) -trace work=tidyup
+    Reasons: target
+
+Total: 2 new installs
+
+
+Build Options:
+    dwarf_compress:                Compress DWARF2+ debug information
+    jobs:                          How many jobs the package's build system should use, where supported
+    recommended_tests:             Run tests considered by the package to be recommended
+    symbols:                       How to handle debug symbols in installed files
+    trace:                         Trace actions executed by the package (very noisy, for debugging broken builds only)
+    work:                          Whether to preserve or remove working directories
+
+OPTIONS:
+    xxhash:                        Use xxhash as a fast, non-cryptographic alternative for checksumming
+
+    (n) app-crypt/sbsigntools:0::arbor 0.9.5 to ::installed
+    "Signing utility for UEFI secure boot"
+    PROVIDERS: -libressl openssl build_options: symbols=split jobs=2 -dwarf_compress recommended_tests -trace work=tidyup
+    Reasons: sys-boot/refind-0.14.0.2:0::obeliks (sug): "For signing and verifying files for UEFI Secure Boot"
+    Take using: --take
+
+Build Options:
+    dwarf_compress:                Compress DWARF2+ debug information
+    jobs:                          How many jobs the package's build system should use, where supported
+    recommended_tests:             Run tests considered by the package to be recommended
+    symbols:                       How to handle debug symbols in installed files
+    trace:                         Trace actions executed by the package (very noisy, for debugging broken builds only)
+    work:                          Whether to preserve or remove working directories
+
+OPTIONS:
+    device-mapper:
+
+providers:
+    libressl:                      Use LibreSSL as the SSL provider
+    openssl:                       Use OpenSSL as the SSL provider
+
+    Build Options:
+    dwarf_compress:                Compress DWARF2+ debug information
+    expensive_tests:               Run tests considered by the package to be useful, but expensive
+    jobs:                          How many jobs the package's build system should use, where supported
+    recommended_tests:             Run tests considered by the package to be recommended
+    symbols:                       How to handle debug symbols in installed files
+    trace:                         Trace actions executed by the package (very noisy, for debugging broken builds only)
+    work:                          Whether to preserve or remove working directories
+
+OPTIONS:
+    bash-completion:               Install completion files for the Bourne Again Shell
+    berkdb:                        Adds support for the Berkeley DB embeddable database engine
+    caps:                          Use Linux capabilities library to control privileges
+    dmeventd:                      DM event daemon to monitor active mapped devices
+    doc:                           Adds extra documentation (API, Javadoc, etc)
+    examples:                      Install example source code
+    fsadm:                         Utility to resize or check filesystem on a device
+    gcrypt:                        Use libgcrypt library as crypto backend
+    gdbm:                          Adds support for sys-libs/gdbm (GNU database libraries)
+    hkps:                          Enable support for HKPS protocol using GnuTLS
+    kerberos:                      Adds Kerberos support
+    kernel:                        Use kernel as crypto backend, needs at least the kernel userspace crypto interface
+    keyboxd:                       Support for a experimental key database daemon
+    libedit:                       Add editline support using libedit
+    lz4:                           Support lz4 compressed images
+    lzo:                           Support lzo compressed images
+    ncurses:                       Adds ncurses support (console display library)
+    nettle:                        Use nettle library as crypto backend
+    nfsv4:                         Enable support for NFSv4, including 4.1
+    nvme:                          Enable nvme alternate WWID
+    openssl:                       Use openssl library as crypto backend
+    passwdqc:                      Password quality checking using passwdqc
+    pwquality:                     Password quality checking using libpwquality
+    python:                        Adds support/bindings for the Python language
+    sed-opal:                      Support For OPAL Self Encrypting Drives
+    smartcard:                     Install the smartcard daemon ( includes CCID support )
+    ssh:                           Support for using remote keyfile through SSH protocol
+    systemd:                       Add support for integration with the systemd init daemon
+    tcl:                           Build tcl bindings. Should be enabled if you want to run expensive tests
+    tcpd:                          Adds support for TCP wrappers (allowing or denying specific TCP connections with file entries)
+    tk:                            Adds support for Tk GUI toolkit
+    tofu:                          Support for the Trust on First Use trust model
+    tpm2:                          Allows binding keys to the local machine using TPM2 hardware
+    xz:                            Support xz compressed images
+    yjit:                          JIT compiler in Rust
+    zoned:                         Support for Zoned Storage Devices
+    zstd:                          Support zstd compressed images
+
+linguas:
+    ar:                            Arabic locale
+    ka:                            Georgian locale
+
+parts:
+    openrc:                        OpenRC service files
+
+providers:
+    busybox:                       syslog provider
+    eudev:                         Use eudev as the udev provider
+    heimdal:                       Use Heimdal Kerberos 5 as the Kerberos provider
+    krb5:                          Use MIT Kerberos 5 as the Kerberos provider
+    libgcrypt:                     Prefer libgcrypt over the build-in hash implementation
+    libressl:                      Use LibreSSL as the SSL provider
+    libsodium:                     Prefer libsodium over the built-in hash implementation
+    openssl:
+        sys-libs/db:18.1::arbor:   Use OpenSSL as the SSL provider
+        dev-lang/ruby:3.4::arbor:  Use OpenSSL as the SSL provider
+        sys-fs/btrfs-progs:0::arbor:  Prefer libsodium over the built-in hash implementation
+        sys-fs/cryptsetup:0::arbor:  Use OpenSSL as the SSL provider
+    rsyslog:                       syslog provider
+    s6:                            syslog provider
+    syslog-ng:                     syslog provider
+    systemd:
+        sys-fs/btrfs-progs:0::arbor:  Use systemd as the syslog/udev/logind provider
+        sys-fs/lvm2:0::arbor:      Use systemd as the syslog/udev/logind provider
+        virtual/syslog:0::arbor:   syslog provider
+
+python_abis:
+    3.10:                          Use Python ABI 3.10
+    3.11:                          Use Python ABI 3.11
+    3.12:                          Use Python ABI 3.12
+    3.13:                          Use Python ABI 3.13
+    3.14:                          Use Python ABI 3.14
+    3.9:                           Use Python ABI 3.9
+
+ruby_abis:
+    2.7:                           Use Ruby ABI 2.7
+    3.0:                           Use Ruby ABI 3.0
+    3.1:                           Use Ruby ABI 3.1
+    3.2:                           Use Ruby ABI 3.2
+    3.3:                           Use Ruby ABI 3.3
+    3.4:                           Use Ruby ABI 3.4
+
+    Build Options:
+    dwarf_compress:                Compress DWARF2+ debug information
+    expensive_tests:               Run tests considered by the package to be useful, but expensive
+    jobs:                          How many jobs the package's build system should use, where supported
+    recommended_tests:             Run tests considered by the package to be recommended
+    symbols:                       How to handle debug symbols in installed files
+    trace:                         Trace actions executed by the package (very noisy, for debugging broken builds only)
+    work:                          Whether to preserve or remove working directories
+
+OPTIONS:
+    bash-completion:               Install completion files for the Bourne Again Shell
+    berkdb:                        Adds support for the Berkeley DB embeddable database engine
+    caps:                          Use Linux capabilities library to control privileges
+    dmeventd:                      DM event daemon to monitor active mapped devices
+    doc:                           Adds extra documentation (API, Javadoc, etc)
+    examples:                      Install example source code
+    fsadm:                         Utility to resize or check filesystem on a device
+    gcrypt:                        Use libgcrypt library as crypto backend
+    gdbm:                          Adds support for sys-libs/gdbm (GNU database libraries)
+    hkps:                          Enable support for HKPS protocol using GnuTLS
+    kerberos:                      Adds Kerberos support
+    kernel:                        Use kernel as crypto backend, needs at least the kernel userspace crypto interface
+    keyboxd:                       Support for a experimental key database daemon
+    libedit:                       Add editline support using libedit
+    lz4:                           Support lz4 compressed images
+    lzo:                           Support lzo compressed images
+    ncurses:                       Adds ncurses support (console display library)
+    nettle:                        Use nettle library as crypto backend
+    nfsv4:                         Enable support for NFSv4, including 4.1
+    nvme:                          Enable nvme alternate WWID
+    openssl:                       Use openssl library as crypto backend
+    passwdqc:                      Password quality checking using passwdqc
+    pwquality:                     Password quality checking using libpwquality
+    python:                        Adds support/bindings for the Python language
+    sed-opal:                      Support For OPAL Self Encrypting Drives
+    smartcard:                     Install the smartcard daemon ( includes CCID support )
+    ssh:                           Support for using remote keyfile through SSH protocol
+    systemd:                       Add support for integration with the systemd init daemon
+    tcl:                           Build tcl bindings. Should be enabled if you want to run expensive tests
+    tcpd:                          Adds support for TCP wrappers (allowing or denying specific TCP connections with file entries)
+    tk:                            Adds support for Tk GUI toolkit
+    tofu:                          Support for the Trust on First Use trust model
+    tpm2:                          Allows binding keys to the local machine using TPM2 hardware
+    xattr:                         Adds support for Extended File Attributes
+    xz:                            Support xz compressed images
+    yjit:                          JIT compiler in Rust
+    zoned:                         Support for Zoned Storage Devices
+    zstd:                          Support zstd compressed images
+
+linguas:
+    ar:                            Arabic locale
+    ka:                            Georgian locale
+
+parts:
+    openrc:                        OpenRC service files
+
+providers:
+    busybox:                       syslog provider
+    eudev:                         Use eudev as the udev provider
+    heimdal:                       Use Heimdal Kerberos 5 as the Kerberos provider
+    krb5:                          Use MIT Kerberos 5 as the Kerberos provider
+    libgcrypt:                     Prefer libgcrypt over the build-in hash implementation
+    libressl:                      Use LibreSSL as the SSL provider
+    libsodium:                     Prefer libsodium over the built-in hash implementation
+    openssl:
+        sys-libs/db:18.1::arbor:   Use OpenSSL as the SSL provider
+        dev-lang/ruby:3.4::arbor:  Use OpenSSL as the SSL provider
+        sys-fs/btrfs-progs:0::arbor:  Prefer libsodium over the built-in hash implementation
+        sys-fs/cryptsetup:0::arbor:  Use OpenSSL as the SSL provider
+    rsyslog:                       syslog provider
+    s6:                            syslog provider
+    syslog-ng:                     syslog provider
+    systemd:
+        sys-fs/btrfs-progs:0::arbor:  Use systemd as the syslog/udev/logind provider
+        sys-fs/lvm2:0::arbor:      Use systemd as the syslog/udev/logind provider
+        virtual/syslog:0::arbor:   syslog provider
+
+python_abis:
+    3.10:                          Use Python ABI 3.10
+    3.11:                          Use Python ABI 3.11
+    3.12:                          Use Python ABI 3.12
+    3.13:                          Use Python ABI 3.13
+    3.14:                          Use Python ABI 3.14
+    3.9:                           Use Python ABI 3.9
+
+ruby_abis:
+    2.7:                           Use Ruby ABI 2.7
+    3.0:                           Use Ruby ABI 3.0
+    3.1:                           Use Ruby ABI 3.1
+    3.2:                           Use Ruby ABI 3.2
+    3.3:                           Use Ruby ABI 3.3
+    3.4:                           Use Ruby ABI 3.4
+Build Options:
+    dwarf_compress:                Compress DWARF2+ debug information
+    expensive_tests:               Run tests considered by the package to be useful, but expensive
+    jobs:                          How many jobs the package's build system should use, where supported
+    recommended_tests:             Run tests considered by the package to be recommended
+    symbols:                       How to handle debug symbols in installed files
+    trace:                         Trace actions executed by the package (very noisy, for debugging broken builds only)
+    work:                          Whether to preserve or remove working directories
+
+OPTIONS:
+    X:
+        x11-libs/cairo:0::x11:     Adds support for X11
+        x11-libs/pango:0::x11:     Xft backend
+    bash-completion:               Install completion files for the Bourne Again Shell
+    chafa:                         Use chafa to produce output for the hb-view cli tool
+    debug:                         Enable debugging features or make debugging easier
+    doc:                           Adds extra documentation (API, Javadoc, etc)
+    emacs:
+    gobject-introspection:         Build XML data for exposed APIs for generating language bindings
+    graphite:                      Build with Graphite2 font system support
+    gtk-doc:                       Rebuilds gtk-doc documentation
+    harfbuzz:                      improve auto-hinting of OpenType fonts
+    readline:                      Enables support for libreadline, a GNU line-editing library that almost everyone wants
+    rust:                          Install extensions requiring rust
+    sqlite:                        Adds support for SQLite - embedded SQL database
+    static:                        Build static version of libsqlite3
+    systemd:                       Systemd integration to coordinate boot up process
+    tk:                            Install hgk, a port to mercurial of git's gitk repository viewer
+    utils:
+    woff2:                         Support decompression of Web Open Font Format2 streams
+    zsh-completion:                Install completion files for the Z Shell
+
+providers:
+    eudev:                         Use eudev as the udev provider
+    systemd:                       Use systemd as the syslog/udev/logind provider
+
+python_abis:
+    2.7:                           Use Python ABI 2.7
+    3.10:                          Use Python ABI 3.10
+    3.11:                          Use Python ABI 3.11
+    3.12:                          Use Python ABI 3.12
+    3.13:                          Use Python ABI 3.13
+    3.14:                          Use Python ABI 3.14
+    3.9:                           Use Python ABI 3.9
+
+video_drivers:
+    intel:                         Driver for Intel graphics chips (like GM965)
+    nouveau:
+    radeon:
+    vc4:
+    vmware:

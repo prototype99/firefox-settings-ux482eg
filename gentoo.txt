@@ -1,0 +1,302 @@
+/etc/portage/make.conf
+
+resolv.conf?
+
+/etc/portage/repos.conf
+
+installation process so far:
+
+check out app-alternatives
+
+emerge --info
+
+eix sqlite flag?
+
+app-portage/cpuid2cpuflags to remove?
+
+world favourites file
+
+fstab files!
+
+package.use directory?
+
+ * You can safely disable CFG80211_CRDA_SUPPORT
+
+-custom-cflags
+
+ * Messages for package sys-kernel/gentoo-kernel-6.12.63:
+
+ * Your configuration for sys-kernel/gentoo-kernel-6.12.63 has been saved in
+ * "/etc/portage/savedconfig/sys-kernel/gentoo-kernel-6.12.63" for your editing pleasure.
+ * You can edit these files by hand and remerge this package with
+ * USE=savedconfig to customise the configuration.
+ * You can rename this file/directory to one of the following for
+ * its configuration to apply to multiple versions:
+ * ${PORTAGE_CONFIGROOT}/etc/portage/savedconfig/
+ * [${CTARGET}|${CHOST}|""]/${CATEGORY}/[${PF}|${P}|${PN}]
+
+
+  * Additional tools that may be of interest:
+ *     app-admin/eclean-kernel
+ *     app-portage/diffmask
+ *     app-portage/flaggie
+ *     app-portage/portpeek
+ *     app-portage/smart-live-rebuild
+
+  * Note that the /etc/updatedb.conf file is generic,
+ * please customize it to your system requirements.
+
+1. configure partitions
+
+2. extract tarball
+
+3. this:
+
+sudo mount --types proc /proc /run/media/seirra/gentoo/proc
+sudo mount --rbind /sys /run/media/seirra/gentoo/sys
+sudo mount --make-rslave /run/media/seirra/gentoo/sys
+sudo mount --rbind /dev /run/media/seirra/gentoo/dev
+sudo mount --make-rslave /run/media/seirra/gentoo/dev
+sudo mount --bind /run /run/media/seirra/gentoo/run
+sudo mount --make-slave /run/media/seirra/gentoo/run
+
+4. sudo chroot /run/media/seirra/gentoo /bin/bash
+
+5. set make.conf
+
+6. set repos dir
+
+7. emerge --sync
+
+8. eselect profile set
+
+9. emerge --ask --verbose --update --deep --changed-use @world
+
+10. ln -sf ../usr/share/zoneinfo/Europe/London /etc/localtime
+
+10. set /etc/locale.gen
+
+11. locale-gen
+
+12. eselect locale set
+
+11. USE="dracut refind btrfs iwd -networkmanager" ACCEPT_LICENSE="*" emerge --ask sys-firmware/sof-firmware sys-kernel/linux-firmware sys-auth/rtkit kde-plasma/kwallet-pam kde-apps/kwalletmanager app-portage/eix sys-firmware/intel-microcode sys-kernel/installkernel app-shells/dash sys-kernel/gentoo-kernel net-misc/cmst net-misc/connman app-portage/gentoolkit sys-apps/mlocate net-misc/chrony sys-fs/dosfstools sys-fs/btrfs-progs sys-block/io-scheduler-udev-rules
+
+12. rm /bin/sh
+
+13. ln -s dash /bin/sh
+
+12. systemctl --user --force enable wireplumber.service pipewire.socket pipewire-pulse.socket switcheroo-control
+
+13. refind-install
+
+14. echo hostname > /etc/hostname
+
+15. hostnamectl hostname tux
+
+16. set fstab
+
+17. systemctl daemon-reload
+
+18. passwd
+
+19. systemd-machine-id-setup
+
+20. systemd-firstboot --prompt
+
+21. systemctl
+
+22. systemctl preset-all --preset-mode=enable-only
+
+23. systemctl preset-all
+
+24. configure /etc/chrony/chrony.conf
+
+25. systemctl enable chronyd.service
+
+[ebuild  N     ] media-libs/libogg-1.3.6::gentoo  USE="-static-libs" ABI_X86="(64) -32 (-x32)" 430 KiB
+[ebuild  N     ] app-crypt/argon2-20190702-r1:0/1::gentoo  USE="-static-libs" 1471 KiB
+[ebuild  N     ] media-libs/alsa-topology-conf-1.2.5.1-r1::gentoo  USE="-verify-sig" 12 KiB
+[ebuild  N     ] media-libs/alsa-ucm-conf-1.2.14::gentoo  71 KiB
+[ebuild  N     ] acct-group/pipewire-0-r2::gentoo  0 KiB
+[ebuild  N     ] media-libs/libfreeaptx-0.1.1-r1::gentoo  ABI_X86="(64) -32 (-x32)" CPU_FLAGS_X86="-avx2" 28 KiB
+[ebuild  N     ] dev-libs/ell-0.77::gentoo  USE="-pie -test" 581 KiB
+[ebuild  N     ] media-libs/sbc-2.1::gentoo  USE="-static-libs" ABI_X86="(64) -32 (-x32)" 266 KiB
+[ebuild  N     ] dev-libs/libltdl-2.5.4::gentoo  USE="-static-libs" ABI_X86="(64) -32 (-x32)" 1033 KiB
+[ebuild  N     ] sys-apps/keyutils-1.6.3-r1:0/1.9::gentoo  USE="-static -static-libs -test" ABI_X86="(64) -32 (-x32)" 134 KiB
+[ebuild  N     ] media-libs/fdk-aac-2.0.3:0/2::gentoo  USE="-examples" ABI_X86="(64) -32 (-x32)" 2839 KiB
+[ebuild  N     ] net-libs/nghttp3-1.9.0::gentoo  ABI_X86="(64) -32 (-x32)" 391 KiB
+[ebuild   R    ] sys-devel/gettext-0.23.2::gentoo  USE="acl cxx ncurses nls openmp* (xattr) -doc -emacs -git -java -static-libs -verify-sig" ABI_X86="(64) -32 (-x32)" 10792 KiB
+[ebuild   R    ] sys-libs/zlib-1.3.1-r1:0/1::gentoo  USE="minizip* -static-libs -verify-sig" ABI_X86="(64) -32 (-x32)" 1276 KiB
+[ebuild     U  ] media-libs/libpng-1.6.54:0/16::gentoo [1.6.52:0/16::gentoo] USE="-apng -static-libs -test" ABI_X86="(64) -32 (-x32)" CPU_FLAGS_X86="sse" 1040 KiB
+[ebuild     U  ] dev-libs/libgpg-error-1.58::gentoo [1.57::gentoo] USE="nls -common-lisp -static-libs -test (-verify-sig)" ABI_X86="(64) -32 (-x32)" 1098 KiB
+[ebuild   R    ] dev-db/sqlite-3.50.4:3::gentoo  USE="icu* readline -debug -doc -secure-delete -static-libs -tcl -test -tools" ABI_X86="(64) -32 (-x32)" 14057 KiB
+[ebuild  N     ] media-libs/alsa-lib-1.2.14::gentoo  USE="-debug -doc -python" ABI_X86="(64) -32 (-x32)" PYTHON_SINGLE_TARGET="python3_13 -python3_11 -python3_12" 1090 KiB
+[ebuild  N     ] media-libs/libvorbis-1.3.7-r2::gentoo  USE="-static-libs -test" ABI_X86="(64) -32 (-x32)" 1176 KiB
+[ebuild  N     ] app-text/hunspell-1.7.2-r1:0/1.7::gentoo  USE="ncurses nls readline -static-libs" L10N="-af -bg -ca -cs -cy -da -de -de-1901 -el -en -eo -es -et -fo -fr -ga -gl -he -hr -hu -ia -id -is -it -kk -km -ku -lt -lv -mi -mk -ms -nb -nl -nn -pl -pt -pt-BR -ro -ru -sk -sl -sq -sv -sw -tn -uk -zu" 1501 KiB
+[ebuild  N     ] net-libs/libasyncns-0.8-r4::gentoo  USE="-debug -doc" ABI_X86="(64) -32 (-x32)" 334 KiB
+[ebuild  N     ] media-libs/flac-1.5.0:0/11-14::gentoo  USE="cxx ogg -debug -static-libs" ABI_X86="(64) -32 (-x32)" CPU_FLAGS_X86="-avx -avx2" 1054 KiB
+[ebuild  N     ] media-sound/lame-3.100-r3::gentoo  USE="frontend -debug -mp3rtp -sndfile -static-libs" ABI_X86="(64) -32 (-x32)" CPU_FLAGS_X86="(-mmx)" 1489 KiB
+[ebuild     U  ] dev-libs/libgcrypt-1.11.2-r1:0/20::gentoo [1.11.2:0/20::gentoo] USE="asm getentropy -doc -static-libs (-verify-sig)" ABI_X86="(64) -32 (-x32)" CPU_FLAGS_X86="-aes -avx -avx2 -avx512f -padlock -sha -sse4_1" 4139 KiB
+[ebuild  N     ] dev-libs/libbytesize-2.11::gentoo  USE="-doc -python -test -tools" PYTHON_TARGETS="python3_13 -python3_11 -python3_12" 449 KiB
+[ebuild  N     ] app-eselect/eselect-lua-4-r1::gentoo  0 KiB
+[ebuild  N     ] app-eselect/eselect-mpg123-0.1-r1::gentoo  0 KiB
+[ebuild  N     ] dev-lang/lua-5.4.8:5.4::gentoo  USE="deprecated readline" 610 KiB
+[ebuild  N     ] media-sound/mpg123-base-1.33.3::gentoo  USE="alsa ipv6 pulseaudio sdl (-coreaudio) -int-quality -jack -nas -oss -portaudio" ABI_X86="(64) -32 (-x32)" CPU_FLAGS_X86="sse (-3dnow) (-3dnowext) (-mmx)" 1096 KiB
+[ebuild   R    ] app-crypt/libb2-0.98.1-r3::gentoo  USE="openmp* -native-cflags -static-libs" ABI_X86="(64) -32 (-x32)" 275 KiB
+[ebuild     U  ] dev-perl/libwww-perl-6.810.0::gentoo [6.800.0::gentoo] USE="ssl -test" PERL_FEATURES="(-debug) -ithreads -quadmath" 183 KiB
+[ebuild  N     ] x11-themes/sound-theme-freedesktop-0.8-r1::gentoo  468 KiB
+[ebuild   R    ] media-libs/libwebp-1.6.0:0/7::gentoo  USE="gif jpeg opengl png tiff* -static-libs -swap-16bit-csp" ABI_X86="(64) -32 (-x32)" CPU_FLAGS_X86="sse2 -avx2 -sse4_1" 4196 KiB
+[ebuild  N     ] dev-libs/libatasmart-0.19_p5:0/4::gentoo  USE="-static-libs" 252 KiB
+[ebuild  N     ] sys-apps/gptfdisk-1.0.10-r1::gentoo  USE="ncurses -static" 216 KiB
+[ebuild  N     ] sys-fs/lvm2-2.03.22-r7::gentoo  USE="readline systemd udev -lvm -sanlock (-selinux) -static -static-libs -thin -valgrind" 2691 KiB
+[ebuild  N     ] net-libs/nghttp2-1.65.0-r2:0/1.14::gentoo  USE="systemd xml -debug -hpack-tools -jemalloc -test -utils" ABI_X86="(64) -32 (-x32)" 1568 KiB
+[ebuild  N     ] sys-block/parted-3.6-r2::gentoo  USE="debug nls readline -device-mapper -verify-sig" 1852 KiB
+[ebuild   R    ] net-misc/curl-8.17.0-r1::gentoo  USE="adns alt-svc ftp hsts http2* http3* httpsrr imap openssl pop3 psl quic* smtp ssl tftp websockets -brotli -debug (-ech) -gnutls -gopher -idn -kerberos -ldap -mbedtls -rtmp (-rustls) -samba -sasl-scram -ssh -static-libs -telnet -test -verify-sig -zstd" ABI_X86="(64) -32 (-x32)" CURL_QUIC="openssl* -ngtcp2" CURL_SSL="openssl -gnutls -mbedtls (-rustls)" 2732 KiB
+[ebuild  N     ] dev-libs/json-c-0.18:0/5.1::gentoo  USE="-doc -static-libs -test -threads" ABI_X86="(64) -32 (-x32)" CPU_FLAGS_X86="-rdrand" 393 KiB
+[ebuild  N     ] dev-db/mysql-connector-c-8.0.41-r1:0/21::gentoo  USE="-ldap -static-libs" ABI_X86="(64) -32 (-x32)" 477295 KiB
+[ebuild  N     ] media-libs/libldac-2.0.2.3-r2::gentoo  ABI_X86="(64) -32 (-x32)" 74 KiB
+[ebuild  N     ] sys-fs/cryptsetup-2.8.3-r1:0/12::gentoo  USE="argon2 nls openssl udev -fips -gcrypt -kernel -nettle -passwdqc -pwquality -ssh -static -static-libs -test -urandom -verify-sig" 11586 KiB
+[ebuild  N     ] media-libs/opus-1.5.2::gentoo  USE="-custom-modes -debug -deep-plc -doc -dred -hardened -osce -static-libs -test" ABI_X86="(64) -32 (-x32)" CPU_FLAGS_X86="sse" 7656 KiB
+[ebuild  N     ] sys-libs/libnvme-1.16.1:0/1::gentoo  USE="dbus json ssl -debug -examples -io-uring -keyutils -python -test" PYTHON_TARGETS="python3_13 -python3_11 -python3_12 -python3_14" 819 KiB
+[ebuild   R    ] net-misc/iputils-20250605-r1::gentoo  USE="arping filecaps* nls -caps -clockdiff -doc -idn -test -tracepath -verify-sig" 461 KiB
+[ebuild  N     ] media-libs/libsndfile-1.2.2-r2::gentoo  USE="alsa -minimal -sqlite -test" ABI_X86="(64) -32 (-x32)" 714 KiB
+[ebuild  N     ] dev-qt/qtcore-5.15.18:5/5.15.18::gentoo  USE="icu -debug -old-kernel -test" 50734 KiB
+[ebuild  N     ] sys-libs/libblockdev-3.3.1:0/3::gentoo  USE="cryptsetup nvme tools -device-mapper -escrow -gtk-doc -introspection -lvm -python -smart -test" PYTHON_SINGLE_TARGET="python3_13 -python3_11 -python3_12" 1133 KiB
+[ebuild  N     ] dev-qt/qtdbus-5.15.18:5/5.15::gentoo  USE="-debug -test" 0 KiB
+[ebuild  N     ] dev-libs/libgudev-238-r2::gentoo  USE="introspection -test" ABI_X86="(64) -32 (-x32)" 30 KiB
+[ebuild  N     ] dev-libs/libical-3.0.20-r2:0/3::gentoo  USE="glib introspection -doc -examples -static-libs -test -vala" 952 KiB
+[ebuild  N     ] sys-power/switcheroo-control-3.0::gentoo  USE="-gtk-doc (-selinux) -test" PYTHON_SINGLE_TARGET="python3_13 -python3_11 -python3_12 -python3_14" VIDEO_CARDS="amdgpu nouveau" 33 KiB
+[ebuild   R    ] dev-python/pillow-11.3.0::gentoo  USE="avif jpeg lcms tiff truetype* webp xcb zlib -debug -examples -imagequant -jpeg2k -test -tk" PYTHON_TARGETS="python3_13 (-pypy3_11) -python3_11 -python3_12 -python3_14" 46068 KiB
+[ebuild   R    ] sys-auth/polkit-126-r2::gentoo  USE="gtk introspection kde* nls pam systemd -examples (-selinux) -test" 446 KiB
+[ebuild  N     ] sys-fs/udisks-2.10.2-r1:2::gentoo  USE="acl daemon introspection nls systemd -debug (-elogind) -lvm (-selinux)" 1750 KiB
+[ebuild  N     ] dev-qt/qtgui-5.15.18:5/5.15.18::gentoo  USE="X dbus egl jpeg libinput png udev vulkan wayland -accessibility -debug -eglfs -evdev -gles2-only -ibus -linuxfb -test -tslib -tuio -vnc" 0 KiB
+[ebuild  N     ] dev-qt/qtwayland-5.15.18:5/5.15.18::gentoo  USE="vulkan -compositor -debug -test" 580 KiB
+[ebuild   R    ] x11-misc/xdg-utils-1.2.1-r9::gentoo  USE="X dbus plasma* -doc -gnome -perl" 287 KiB
+[ebuild   R    ] dev-qt/qtbase-6.10.1:6/6.10.1::gentoo  USE="X concurrent cups dbus gtk gui icu libinput libproxy mysql* network nls opengl sql sqlite ssl udev vulkan wayland widgets xml (zstd) -accessibility -brotli -custom-cflags -eglfs -evdev -gles2-only -gssapi -journald -oci8 -odbc -postgres -renderdoc -sctp -syslog -test -tslib" 49058 KiB
+[ebuild  N     ] kde-frameworks/breeze-icons-6.22.0:6/6.22::gentoo  USE="-test" 2059 KiB
+[ebuild  N     ] kde-frameworks/ki18n-6.22.0:6/6.22::gentoo  USE="-debug -test" PYTHON_SINGLE_TARGET="python3_13 -python3_11 -python3_12 -python3_14" 3019 KiB
+[ebuild  N     ] dev-qt/qt5compat-6.10.1:6/6.10.1::gentoo  USE="gui icu qml -custom-cflags -test" 14273 KiB
+[ebuild  N     ] app-crypt/qca-2.3.10-r1:2::gentoo  USE="ssl -botan -debug -doc -examples -gcrypt -gpg -logger -nss -pkcs11 -sasl -softstore -test" 747 KiB
+[ebuild  N     ] kde-frameworks/ksecretd-services-6.22.0:6::gentoo  USE="systemd" 356 KiB
+[ebuild  N     ] dev-qt/qtwidgets-5.15.18:5/5.15::gentoo  USE="X dbus gtk png -debug -gles2-only -test" 0 KiB
+[ebuild  N     ] sys-auth/polkit-qt-0.200.0::gentoo  USE="qt5 qt6" 57 KiB
+[ebuild  N     ] net-wireless/bluez-5.85:0/3::gentoo  USE="cups mesh obex readline systemd udev -btpclient -debug -deprecated -doc -experimental -extra-tools -man -midi (-selinux) -test -test-programs" ABI_X86="(64) -32 (-x32)" PYTHON_SINGLE_TARGET="python3_13 -python3_11 -python3_12" 2163 KiB
+[ebuild  N     ] kde-frameworks/kcoreaddons-6.22.0:6/6.22::gentoo  USE="dbus -debug -test" 2497 KiB
+[ebuild  N     ] kde-frameworks/kconfig-6.22.0:6/6.22::gentoo  USE="dbus qml -debug -test" 350 KiB
+[ebuild  N     ] kde-frameworks/kcrash-6.22.0:6/6.22::gentoo  USE="X -debug -test" 29 KiB
+[ebuild  N     ] kde-frameworks/kdbusaddons-6.22.0:6/6.22::gentoo  USE="X -debug -test" 46 KiB
+[ebuild  N     ] kde-frameworks/kirigami-6.22.0:6/6.22::gentoo  USE="openmp -debug -examples -test" 567 KiB
+[ebuild  N     ] kde-frameworks/kwidgetsaddons-6.22.0:6/6.22::gentoo  USE="-debug -designer -test" 4156 KiB
+[ebuild  N     ] kde-frameworks/karchive-6.22.0:6/6.22::gentoo  USE="crypt zstd -debug -test" 1122 KiB
+[ebuild  N     ] kde-frameworks/kdoctools-6.22.0:6/6.22::gentoo  USE="nls -debug -test" 451 KiB
+[ebuild  N     ] kde-frameworks/kservice-6.22.0:6/6.22::gentoo  USE="man -debug -test" 2360 KiB
+[ebuild  N     ] kde-plasma/kde-cli-tools-common-6.5.5::gentoo  USE="handbook" 625 KiB
+[ebuild  N     ] kde-frameworks/kcolorscheme-6.22.0:6/6.22::gentoo  USE="-debug" 51 KiB
+[ebuild  N     ] kde-frameworks/kiconthemes-6.22.0:6/6.22::gentoo  USE="-debug -designer -test" 1243 KiB
+[ebuild  N     ] kde-frameworks/kitemviews-6.22.0:6/6.22::gentoo  USE="-debug -designer -test" 2178 KiB
+[ebuild  N     ] kde-frameworks/kcodecs-6.22.0:6/6.22::gentoo  USE="-debug -test" 2419 KiB
+[ebuild  N     ] kde-frameworks/kcompletion-6.22.0:6/6.22::gentoo  USE="-debug -designer -test" 2247 KiB
+[ebuild  N     ] kde-frameworks/kconfigwidgets-6.22.0:6/6.22::gentoo  USE="-debug -designer -test" 2473 KiB
+[ebuild  N     ] kde-frameworks/kglobalaccel-6.22.0:6/6.22::gentoo  USE="X -debug -test" 2219 KiB
+[ebuild  N     ] kde-frameworks/kxmlgui-6.22.0:6/6.22::gentoo  USE="-debug -designer -test" 2831 KiB
+[ebuild  N     ] kde-frameworks/kbookmarks-6.22.0:6/6.22::gentoo  USE="-debug -test" 1069 KiB
+[ebuild  N     ] kde-frameworks/solid-6.22.0:6/6.22::gentoo  USE="-debug -ios -test" 298 KiB
+[ebuild  N     ] kde-frameworks/kded-6.22.0:6/6.22::gentoo  USE="man -debug" 36 KiB
+[ebuild  N     ] kde-frameworks/sonnet-6.22.0:6/6.22::gentoo  USE="hunspell qml -aspell -debug -designer -test" 2358 KiB
+[ebuild  N     ] kde-frameworks/ktextwidgets-6.22.0:6/6.22::gentoo  USE="-debug -designer -speech -test" 2429 KiB
+[ebuild  N     ] kde-frameworks/kpackage-6.22.0:6/6.22::gentoo  USE="-debug -man -test" 178 KiB
+[ebuild  N     ] kde-frameworks/ksvg-6.22.0:6/6.22::gentoo  USE="-debug -test" 83 KiB
+[ebuild  N     ] kde-plasma/plasma-activities-6.5.5:6/7::gentoo  USE="-debug -doc -test" 62 KiB
+[ebuild  N     ] kde-frameworks/kwallet-6.22.0:6/6.22::gentoo  USE="-debug -minimal -test" 0 KiB
+[ebuild   R    ] app-portage/portage-utils-0.97::gentoo  USE="openmp* qmanifest -static" 1818 KiB
+[ebuild  N     ] media-libs/libpulse-17.0::gentoo  USE="X asyncns dbus glib gtk systemd -doc (-selinux) -test -valgrind" ABI_X86="(64) -32 (-x32)" 1530 KiB
+[ebuild  N     ] media-libs/libcanberra-0.30-r8::gentoo  USE="alsa pulseaudio udev -gstreamer -oss -tdb" ABI_X86="(64) -32 (-x32)" 312 KiB
+[ebuild  N     ] media-video/pipewire-1.4.9-r1:0/0.4::gentoo  USE="X bluetooth dbus readline sound-server ssl systemd -doc -echo-cancel (-elogind) -extra -ffmpeg -fftw -flatpak -gsettings -gstreamer -ieee1394 -jack-client -jack-sdk -liblc3 -loudness -lv2 -man -modemmanager -pipewire-alsa -roc (-selinux) (-system-service) -test -v4l -zeroconf" ABI_X86="(64) -32 (-x32)" 1968 KiB
+[ebuild  N     ] media-video/wireplumber-0.5.12:0/0.5::gentoo  USE="systemd -doc (-elogind) (-system-service) -test" LUA_SINGLE_TARGET="lua5-4 -lua5-3" 437 KiB
+[ebuild  N     ] kde-frameworks/knotifications-6.22.0:6/6.22::gentoo  USE="-debug" 2251 KiB
+[ebuild  N     ] kde-frameworks/kwallet-runtime-6.22.0:6/6.22::gentoo  USE="X (keyring) (legacy-kwallet) man -debug -gpg -test" 0 KiB
+[ebuild  N     ] kde-frameworks/kjobwidgets-6.22.0:6/6.22::gentoo  USE="X -debug -test" 2189 KiB
+[ebuild  N     ] kde-frameworks/kio-6.22.1:6/6.22::gentoo  USE="X acl handbook kwallet wayland -debug -designer -test" 3409 KiB
+[ebuild  N     ] kde-frameworks/kcmutils-6.22.0:6/6.22::gentoo  USE="-debug -test" 2388 KiB
+[ebuild  N     ] kde-plasma/kde-cli-tools-6.5.5:6::gentoo  USE="X -debug -kdesu" 0 KiB
+[ebuild  N     ] kde-frameworks/kparts-6.22.0:6/6.22::gentoo  USE="-debug -test" 2345 KiB
+[ebuild  N     ] kde-plasma/keditfiletype-6.5.5::gentoo  USE="-debug -test" 0 KiB
+[ebuild  N     ] kde-plasma/libplasma-6.5.5:6::gentoo  USE="-debug -doc -gles2-only -test" 1926 KiB
+[ebuild  N     ] kde-plasma/polkit-kde-agent-6.5.5:6::gentoo  USE="-debug" 57 KiB
+[ebuild  N     ] app-arch/cpio-2.15  USE="nls"
+[ebuild  N     ] app-alternatives/cpio-0  USE="gnu -libarchive (-split-usr)"
+[ebuild  N     ] sys-kernel/linux-firmware-20260110  USE="initramfs redistributable -bindist -compress-xz -compress-zstd -deduplicate -dist-kernel -savedconfig (-unknown-license)"
+[ebuild  N     ] app-eselect/eselect-ruby-20241225
+[ebuild  N     ] dev-perl/Crypt-URandom-0.540.0  USE="-test" PERL_FEATURES="(-debug) -ithreads -quadmath"
+[ebuild  N     ] virtual/perl-Digest-MD5-2.590.0
+[ebuild  N     ] virtual/perl-Digest-SHA-6.40.0-r2
+[ebuild  N     ] dev-perl/Digest-HMAC-1.50.0  USE="-test" PERL_FEATURES="(-debug) -ithreads -quadmath"
+[ebuild  N     ] dev-perl/Authen-SASL-2.190.0  USE="-kerberos -test" PERL_FEATURES="(-debug) -ithreads -quadmath"
+[ebuild  N     ] dev-perl/Error-0.170.300-r1  USE="-test" PERL_FEATURES="(-debug) -ithreads -quadmath"
+[ebuild  N     ] dev-perl/MailTools-2.220.0  USE="-examples -test" PERL_FEATURES="(-debug) -ithreads -quadmath"
+[ebuild  N     ] dev-util/colm-0.14.7-r4  USE="-doc"
+[ebuild  N     ] dev-util/ragel-7.0.4-r3  USE="-doc"
+[ebuild  N     ] dev-lang/ruby-3.3.10-r1  USE="gdbm ssl -berkdb -debug -doc -examples (-jemalloc) -jit -socks5 (-static-libs) -systemtap -tk -valgrind -xemacs"
+[ebuild  N     ] dev-lang/ruby-3.2.9-r1  USE="gdbm ssl -berkdb -debug -doc -examples (-jemalloc) -jit -socks5 (-static-libs) -systemtap -tk -valgrind -xemacs"
+[ebuild  N     ] virtual/ruby-ssl-14  RUBY_TARGETS="ruby32 ruby33"
+[ebuild  N     ] dev-ruby/rubygems-3.6.9  USE="-server -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] virtual/rubygems-20  RUBY_TARGETS="ruby32 ruby33"
+[ebuild  N     ] dev-ruby/matrix-0.4.2  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/rake-13.3.0  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/json-2.12.2  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/minitest-5.25.5  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/racc-1.8.1  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34) (-ruby40)"
+[ebuild  N     ] dev-ruby/did_you_mean-2.0.0  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34) (-ruby40)"
+[ebuild  N     ] dev-ruby/power_assert-2.0.5  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34) (-ruby40)"
+[ebuild  N     ] dev-ruby/test-unit-3.6.8  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/logger-1.7.0  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34) (-ruby40)"
+[ebuild  N     ] dev-ruby/rbs-3.8.1  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/strscan-3.1.5  USE="-test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/rexml-3.4.4  USE="-test" RUBY_TARGETS="ruby32 ruby33 (-ruby34) (-ruby40)"
+[ebuild  N     ] dev-ruby/rss-0.3.1  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-vcs/git-2.52.0  USE="curl gpg iconv nls pcre perl safe-directory webdav -cgi -cvs -doc -highlight -keyring -perforce -rust (-selinux) -subversion -test -tk -xinetd" PYTHON_SINGLE_TARGET="python3_13 -python3_11 -python3_12 -python3_14"
+[ebuild  N     ] dev-ruby/bundler-2.6.9  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/date-3.4.1  USE="-test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/kpeg-1.3.3  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34) (-ruby40)"
+[ebuild  N     ] dev-ruby/stringio-3.1.7  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/psych-5.2.6  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/rdoc-6.13.1  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/pp-0.6.2  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/io-console-0.8.1  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/reline-0.6.1  USE="-test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/irb-1.15.2  USE="-test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/debug-1.11.0  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/prism-1.7.0  USE="-test" RUBY_TARGETS="ruby32 ruby33 (-ruby34) (-ruby40)"
+[ebuild  N     ] dev-ruby/typeprof-0.30.1-r1  USE="-test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/forwardable-1.3.3  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/singleton-0.3.0  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34) (-ruby40)"
+[ebuild  N     ] dev-ruby/prime-0.1.3  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/time-0.4.1  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/asciidoctor-2.0.23  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] sys-kernel/dracut-108-r5  USE="systemd -debug -dracut-cpio (-selinux) -test"
+[ebuild  N     ] dev-ruby/timeout-0.4.3  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/net-protocol-0.2.2  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34) (-ruby40)"
+[ebuild  N     ] dev-ruby/net-imap-0.5.12  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34) (-ruby40)"
+[ebuild  N     ] dev-ruby/net-smtp-0.5.1  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34) (-ruby40)"
+[ebuild  N     ] dev-ruby/net-ftp-0.3.8  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34)"
+[ebuild  N     ] dev-ruby/net-pop-0.1.2  USE="-doc -test" RUBY_TARGETS="ruby32 ruby33 (-ruby34) (-ruby40)
+[ebuild  N     ] dev-util/pahole-1.30  USE="-debug -verify-sig" PYTHON_SINGLE_TARGET="python3_13 -python3_11 -python3_12 -python3_14"
+[ebuild  N     ] sys-kernel/gentoo-kernel-6.12.63  USE="debug initramfs strip -experimental -generic-uki -hardened -modules-compress -modules-sign -savedconfig -secureboot -test -verify-sig"
+[ebuild  N     ] dev-libs/lzo-2.10  USE="-examples (-split-usr) -static-libs" ABI_X86="(64) -32 (-x32)"
+[ebuild  N     ] dev-python/alabaster-1.0.0  PYTHON_TARGETS="python3_13 (-pypy3_11) -python3_11 -python3_12 -python3_14"
+[ebuild  N     ] dev-python/babel-2.17.0  USE="-doc -test" PYTHON_TARGETS="python3_13 (-pypy3_11) -python3_11 -python3_12 -python3_14"
+[ebuild  N     ] dev-python/imagesize-1.4.1  USE="-test" PYTHON_TARGETS="python3_13 (-pypy3_11) -python3_11 -python3_12 -python3_14"
+[ebuild  N     ] dev-python/roman-numerals-4.1.0  USE="-test -verify-provenance" PYTHON_TARGETS="python3_13 (-pypy3_11) -python3_11 -python3_12 (-python3_13t) -python3_14 (-python3_14t)"
+[ebuild  N     ] dev-python/snowballstemmer-3.0.1  PYTHON_TARGETS="python3_13 (-pypy3_11) -python3_11 -python3_12 -python3_14"
+[ebuild  N     ] sys-fs/dosfstools-4.2  USE="iconv -compat -test"
+[ebuild  N     ] dev-python/sphinxcontrib-applehelp-2.0.0-r1  USE="-test" PYTHON_TARGETS="python3_13 -python3_12 -python3_14"
+[ebuild  N     ] dev-python/sphinxcontrib-devhelp-2.0.0-r1  USE="-test" PYTHON_TARGETS="python3_13 -python3_12 -python3_14"
+[ebuild  N     ] dev-python/sphinxcontrib-htmlhelp-2.1.0-r1  USE="-test" PYTHON_TARGETS="python3_13 -python3_12 -python3_14"
+[ebuild  N     ] dev-python/sphinxcontrib-jsmath-1.0.1-r4  USE="-test" PYTHON_TARGETS="python3_13 -python3_12 -python3_14"
+[ebuild  N     ] dev-python/sphinxcontrib-qthelp-2.0.0-r1  USE="-test" PYTHON_TARGETS="python3_13 -python3_12 -python3_14"
+[ebuild  N     ] dev-python/sphinxcontrib-serializinghtml-2.0.0-r1  USE="-test" PYTHON_TARGETS="python3_13 -python3_12 -python3_14"
+[ebuild  N     ] dev-python/sphinx-9.0.4-r1  USE="-doc -latex -test" PYTHON_TARGETS="python3_13 -python3_12 -python3_14"
+[ebuild  N     ] dev-python/sphinxcontrib-jquery-4.1  USE="-test" PYTHON_TARGETS="python3_13 -python3_12 -python3_14"
+[ebuild  N     ] dev-python/sphinx-rtd-theme-3.0.2  USE="-test" PYTHON_TARGETS="python3_13 -python3_12 -python3_14"
+[ebuild  N     ] sys-fs/btrfs-progs-6.17.1  USE="convert man udev zstd -experimental -reiserfs -static -static-libs -verify-sig"
